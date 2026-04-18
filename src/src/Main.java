@@ -11,17 +11,36 @@ public class Main {
         zespol.dodajPracownika(p3);
 
         zespol.wypiszSkladZespolu();
-        System.out.println("Łączny koszt zespołu: " + zespol.policzLacznyKoszt());
+        System.out.println("Łączny koszt zespołu: " + String.format("%.2f", zespol.policzLacznyKoszt()) + " zł");
+        System.out.println();
 
         System.out.println(p1.przedstawSie());
         System.out.println(p2.przedstawSie());
+        System.out.println();
 
         if (p1 instanceof Programista) {
             Programista programista = (Programista) p1;
             programista.wypiszTechnologie();
         }
+        System.out.println();
+
+        if (p2 instanceof Tester) {
+            Tester tester = (Tester) p2;
+            tester.uruchomRaportTestow();
+        }
+        System.out.println();
 
         System.out.println(p2.equals(new Tester("E-201", "Inne", "Dane", 9000.0, false, 10)));
-        System.out.println(p2);
+        System.out.println();
+
+        Pracownik znaleziony = zespol.znajdzPoId("E-102");
+        if (znaleziony != null) {
+            System.out.println(znaleziony.przedstawSie());
+        }
+        System.out.println();
+
+        zespol.wypiszProgramistow();
+        System.out.println();
+        zespol.wypiszTesterowAutomatyzujacych();
     }
 }
